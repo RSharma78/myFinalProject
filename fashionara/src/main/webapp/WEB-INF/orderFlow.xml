@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+ 
+       <!-- Executed when webFlow is triggered -->
+       <on-start>
+             <!-- homeController is java class available through annotated HomeController.java
+                    class.here we are calling it’s initFlow() method. -->
+             <evaluate expression="HomeController.initFlow()" result="flowScope.dress" />
+       </on-start>
+ 
+       <!-- if not specified the first view state is the starting state -->
+       <!-- <view-state id="start" view="Order" model="flowScope.list"> <transition
+             on="submit" to="confirmDetails"/> </view-state> -->
+       <!-- <action-state id="validate"> <evaluate expression="homeController.SendOrder(product,messageContext)"></evaluate>
+             <transition on="success" to="confirmDetails" /> <transition on="failure"
+             to="start" /> </action-state> -->
+ 
+       <view-state id="start" view="Order" model="flowScope.list">
+ 
+             <transition on="submit" to="address" />
+       </view-state>
+ 
+ 
+       <view-state id="address" view="UserAddress" model="flowScope.list">
+             <transition on="edit" to="start" />
+             <transition on="submit" to="thankyou" />
+       </view-state>
+ 
+       <view-state id="thankyou" view="Thankyou">
+             <transition on="submit" to="toHome" />
+       </view-state>
+ 
+       <end-state id="toHome" view="externalRedirect:index" />
+       <!-- <end-state id="toException" view="externalRedirect:contextRelative:exception.jsp"
+             /> -->
+ 
+       <!-- these events are available in every state -->
+       <global-transitions>
+             <transition on="home" to="index" />
+             <!-- <transition on="error" to="toException" /> -->
+       </global-transitions>
+</flow>
