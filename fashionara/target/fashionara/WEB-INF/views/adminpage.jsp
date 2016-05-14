@@ -35,30 +35,37 @@
         	      
         });
         </script>
-<div ="height: 50x"></div>
-<div class="container text-center" ="width: 500px">
-<form:form method="POST" action="addnewdress" commandName="dresses" modelAttribute="dress"  class="form-horizontal" role="form" enctype="multipart/form-data">
-   <table>
-   <c:if test="${!empty dresses.name}">
-    <tr ="padding: 10px;">
+<div = "height:300">
+
+
+<form:form method="POST" action="addnewdress" commandName="dresses" modelAttribute="dress"  
+class="form-horizontal" role="form" enctype="multipart/form-data">
+
+ <!--  <div class="container panel panel-center" style="width: 500px; border-radius: 0px;"> -->
+   <div>
+   <table align="center">
+<c:if test="${!empty dresses.name}"> 
+   
+   
+    <tr ="padding:10px;">
         <td>
             <form:label class="control-label" path="name">
                 <spring:message text="ID"/>
             </form:label>
         </td>
         <td>
-            <form:input path="dressid" readonly="true" size="8"  disabled="true" ng-model="dressid" class="form-control"/>
+            <form:input path="dressid" readonly="true" size="8"  disabled="true" ng-model="dressid" class="form-control" />
             <form:input path="dressid" />
         </td> 
     </tr>
-    </c:if>
+     </c:if> 
     <tr>
         <td><form:label path="size">Size</form:label></td>
         <td><form:input path="size" /></td>
         <td><form:errors path="size"/></td>
     </tr>
     <tr>
-        <td><form:label path="style"></form:label></td>
+        <td><form:label path="style">Style</form:label></td>
         <td><form:input path="style" /></td>
         <td><form:errors path="style"/></td>
     </tr>
@@ -75,51 +82,63 @@
     <tr>
         <tr>
         <td>
-            <form:label class="control-label" path="gtype">
+            <form:label path="gtype">
                 <spring:message text="gtype" />
                 <td><form:errors path="gtype"/></td>
             </form:label>
         </td>
         <td>
-           <form:select path="gtype" ng-model="gtype" class="form-control">
+           <form:select path="gtype">
            		<form:option value="Men">Men's</form:option>
            		<form:option value="Women">Women's</form:option>
            		<form:option value="kids">Kids'</form:option>
            </form:select>
-        </td>
+        </td></tr>
         <tr>
-        <td><form:label path="name"></form:label></td>
+        <td><form:label path="name">Name</form:label></td>
         <td><form:input path="name" /></td>
         <td><form:errors path="name"/></td>
     </tr>
+  
     <tr>
-        ​<td>
+ <td>
             <form:input type="file" path="img"  ng-model="img" class="form-control"/>
         </td>
-        <td><form:errors path="img" cssStyle="color: #c0392b;"/></td>
-        <td><a href="uploadImage"><button>Upload</button></a></td>
-    </tr>
-  <tr>
-        <td colspan="2">
-            <c:if test="${!empty dresses.name}">
-                <button type="submit" class="btn" ="margin: 0px;width:100px; background-color:
-                 #00A2E8; color:white; text-align: center; font-size: 015x; border-radius: 0px;">
-                 <spring:message text="Edit Product"/></button>
-            </c:if>
-            <c:if test="${empty dresses.name}">
-                <button type="submit" class="btn" ="margin: 0px;width:100px; background-color:
+        <td> <form:errors path="img" cssStyle="color: #c0392b;"/></td>
+
+ <td>
+<%-- 
+<c:if test="${!empty dresses.name}">
+<input type="submit" value="<spring:message text="Edit"/>" />
+</c:if>
+<c:if test="${empty dresses.name}">
+<input type="submit" value="<spring:message text="Add"/>" />
+</c:if> --%>
+
+ <c:if test="${empty dress.name}">
+                <button type="submit" class="btn" style=" width:100px; background-color:
 				#00A2E8; color:white; text-align: center; font-size: 015x; border-radius: 0px;">
 				<spring:message text="Add Product"/></button>
             </c:if>
-        </td>
-    </tr>
-</table>  
-</form:form>
+ 
+ 
+ <c:if test="${!empty dress.name}">
+                <button type="submit" class="btn" style="margin: 0px;width:100px; background-color:
+                 #00A2E8; color:white; text-align: center; font-size: 015x; border-radius: 0px;">
+                 <spring:message text="Edit Product"/></button>
+            </c:if>
+            
+         </td>
+         </tr>   
+
+  </table>
+ </form:form>
+   
+<br><br><br>
 
 <div class="container" ng-app="myApp" ng-controller="jsonCtrl" ="padding-top:30px">
    
-  <table class="table table-bordered table-striped">
-    
+  <table  class="table table-bordered">		
 
     <thead>
       <tr>
@@ -192,7 +211,7 @@
        
         
        <td>
-        <form action="updateDress" method="post">
+        <form action="adminpage" method="post">
       	<input type="hidden" value={{roll.dressid}} name="dressid"/>
         <input type="hidden" value={{roll.color}} name="color"/>
         <input type="hidden" value={{roll.price}} name="price"/>
@@ -203,11 +222,11 @@
         
   
 
-
-         <button type="submit" class="btn" ="margin: 0px;width:100px; background-color: #d35400; 
-         color:white; text-align: center; font-size: 015x; border-radius: 0px;"    >
+<a href="/fashionara/edit/{{roll.dressid}}">     
+         <button type="button" class="btn" style="margin: 0px;width:100px; background-color: #d35400; 
+         color:white; text-align: center; font-size: 015x; border-radius: 0px;">
         Edit &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-edit"></span>
-        </button>
+        </button></a>
       </form>
        </td>
        
@@ -215,8 +234,8 @@
        
        
        <td>
-        <form  method="post">
-      	<input type="hidden" value={{roll.dressid}} name="dressid"/>
+       <form action="adminpage">
+     	<input type="hidden" value={{roll.dressid}} name="dressid"/>
         <input type="hidden" value={{roll.color}} name="color"/>
         <input type="hidden" value={{roll.price}} name="price"/>
         <input type="hidden" value={{roll.size}} name="size"/>
@@ -225,12 +244,34 @@
          <input type="hidden" value={{roll.name}} name="name"/>
         
 
-       <button action=" deleteDress/{{roll.dressid}}" type="submit" class="btn" ="margin: 0px;width:100px; background-color:
-        #c0392b; color:white; text-align: center; font-size: 015x; border-radius: 0px;"
-                    >
+       <a href="/fashionara/remove/{{roll.dressid}}">     
+        <button type="button" class="btn" style="margin: 0px;width:100px; background-color:
+        #c0392b; color:white; text-align: center; font-size: 015x; border-radius: 0px;">
         Delete &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-remove"></span>
         </button>
+    </a>
+</form>
+        </td>
+        
+       
+         <td>
+        <form  method="post" action="productdetails">
+      	<input type="hidden" value={{roll.dressid}} name="dressid"/>
+        <input type="hidden" value={{roll.color}} name="color"/>
+        <input type="hidden" value={{roll.price}} name="price"/>
+        <input type="hidden" value={{roll.size}} name="size"/>
+         <input type="hidden" value={{roll.style}} name="style"/>
+         <input type="hidden" value={{roll.gtype}} name="gtype"/>
+         <input type="hidden" value={{roll.name}} name="name"/>
+         
+         
+         <a href="/fashionara/retrieve/{{roll.dressid}}">         
+        <button type="button" class="btn" style="margin: 0px;width:100px; background-color:
+        #c0902b; color:white; text-align: center; font-size: 015x; border-radius: 0px;">
+        Click &nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-click"></span></button></a>
       </form>
+        
+     
        </td>
       </tr>
                      
@@ -238,6 +279,7 @@
     
   </table>
 
- </div>
+ </div></div>
+ 
 
 <jsp:include page="Footer.jsp"/>

@@ -88,16 +88,20 @@ public class AdminController
 
 	@RequestMapping("/adminpa")
 	public String getAdminLandingPage(@ModelAttribute("dress") Dresses dresses,BindingResult result,ModelMap model)
-	{    System.out.println("hello");
+	{
+		
+		
 		model.addAttribute("mprod", dresses);
-	      ArrayList<Dresses> p= (ArrayList<Dresses>) service.getAllDresses();
-			Gson gson=new Gson();
-			String json=gson.toJson(p);
-			System.out.println("ajson: "+json);
+	    ArrayList<Dresses> p= (ArrayList<Dresses>) service.getAllDresses();
+		Gson gson=new Gson();
+		String json=gson.toJson(p);
+			
 				model.addAttribute("list",json);
 		        return "adminpage";
 	}
 	      
+	
+	
 	@RequestMapping(value="/Login",method=RequestMethod.POST)
 	public String getFormData(@RequestParam("username") String user, @RequestParam("password") String pass, Model model)
 	{
@@ -105,19 +109,12 @@ public class AdminController
 		 ArrayList<Dresses> p= (ArrayList<Dresses>) service.getAllDresses();
 			Gson gson=new Gson();
 			String json=gson.toJson(p);
-			System.out.println("ajson: "+json);
+			
 			model.addAttribute("list",json);
-		return "/adminpa";
+			return "/adminpa";
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-			
+
 	
 	 @RequestMapping(value = "/addnewdress", method = RequestMethod.POST)
 	    public String submit(@Valid @ModelAttribute("dress") Dresses dress, BindingResult result, ModelMap model,HttpServletRequest request) 
@@ -175,28 +172,8 @@ public class AdminController
 	                }
 	 }
 	 
-	 
-	 /*	 @RequestMapping(value = "/deleteDress", method = RequestMethod.POST)
-	    public String delete(Dresses dress,BindingResult result, ModelMap model) 
-	 {
-	      model.addAttribute("mprod", dress);
-	      System.out.println("dresses Obj: "+dress);
-	      boolean x=service.deleteDress(dress);
-	     
-	      
-	      System.out.println("deleted inside admin controller");
-	      
-	      ArrayList<Dresses> p= (ArrayList<Dresses>) service.getAllDresses();
-			Gson gson=new Gson();
-			String json=gson.toJson(p);
-			model.addAttribute("list",json.toString());
-	      if(x)
-	        return "adminpage";
-	      else
-	    	  return null;
-	    } 
-	 */
-		    
+
+/*		    
 	    @RequestMapping(value = "/updateDress", method = RequestMethod.POST)
 	    public String edit(@ModelAttribute("dress")Dresses dress,BindingResult result, ModelMap model) 
 	    {
@@ -215,7 +192,7 @@ public class AdminController
 	        return "adminpage";
 	    }
 		 
-	    
+	    */
 	    
 	    
 	    @RequestMapping("/remove/{id}")
@@ -225,18 +202,51 @@ public class AdminController
 	        
 	    	System.out.println("inside remove admin ");
 	        this.service.removeProduct(id);
-	        return "redirect:/adminpa";
+	        return "redirect:/adminpage";
 	    }
-	  
+	 
+	    
 	    @RequestMapping("/edit/{id}")
-	    public String editProduct(@PathVariable("id") int id, Model model){
-	    	
-	    	
+	    public String editProduct(@PathVariable("id") int id,BindingResult result, Model model)
+	    {
+	    	Dresses d=new Dresses();
+	    	System.out.println("inside edit");
+	    	this.service.updateDress(d);
+	   
 	        model.addAttribute("product", this.service.getDressByID(id));
+	        
 	        model.addAttribute("list", this.service.getAllDresses());
-	        return "admin";
+	        return "redirect:/adminpage";
 	    }
 	   
+	    
+	    
+	    
+	    
+		@RequestMapping("/retrieve/{id}")
+		public String retrieve(@PathVariable("id") int id, Model model)
+		{
+			System.out.println("Retreiving data");
+			
+			model.addAttribute("mprod", this.service.getDressByID(id));
+			System.out.println("Retreiving data");
+			
+		    ArrayList<Dresses> p= (ArrayList<Dresses>) service.getAllDresses();
+			Gson gson=new Gson();
+			String json=gson.toJson(p);
+			//model.addAttribute("list",json);
+			
+			//model.addAttribute("mprod",json);
+			
+			
+			return "productdetails";
+			
+		}
+	    
+	    
+	    
+		
+	    
 	    
 	    
 	    }

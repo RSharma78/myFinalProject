@@ -1,6 +1,9 @@
 D:\Training\fashionara\src\main\java\fashionara\model\Dresses.java
+D:\Training\fashionara\src\main\java\fashionara\model\address.java
 D:\Training\fashionara\src\main\java\fashionara\dao\DressesDaoImpl.java
 D:\Training\fashionara\src\main\java\fashionara\service\DressService.java
 D:\Training\fashionara\src\main\java\fashionara\controller\HomeController.java
+D:\Training\fashionara\src\main\java\fashionara\model\order.java
 D:\Training\fashionara\src\main\java\fashionara\controller\AdminController.java
+D:\Training\fashionara\src\main\java\fashionara\model\Item.java
 D:\Training\fashionara\src\main\java\fashionara\dao\DressesDAO.java

@@ -1,6 +1,9 @@
-fashionara\dao\DressesDAO.class
 fashionara\controller\AdminController.class
-fashionara\dao\DressesDaoImpl.class
+fashionara\model\Item.class
+fashionara\model\address.class
 fashionara\model\Dresses.class
 fashionara\service\DressService.class
+fashionara\dao\DressesDAO.class
+fashionara\dao\DressesDaoImpl.class
+fashionara\model\order.class
 fashionara\controller\HomeController.class

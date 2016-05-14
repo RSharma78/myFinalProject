@@ -17,24 +17,29 @@ import org.springframework.web.multipart.MultipartFile;
 public class Dresses implements Serializable
 {
 	
-//private static final long serialVersionUID = 5000L;
+
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	
 	private int dressid;
-	@NotEmpty
+	@NotEmpty(message="can not blank")
 	 private String color;
 	 private int price;
-	 @NotEmpty
+	 @NotEmpty(message="can not blank")
 	private String size;
-	 @NotEmpty
+	 @NotEmpty(message="can not blank")
 	 private String name;
-	 @NotEmpty
+	 @NotEmpty(message="can not blank")
 	 private String style;
-		 
-	 @NotEmpty
+		
+	 
+	 //notnull can be null
+	 @NotEmpty(message="can not blank")
 	 private String gtype;
+
+	 
+	 // data will not be reflected in data base 
 	@Transient
 	 private MultipartFile img;
 	 

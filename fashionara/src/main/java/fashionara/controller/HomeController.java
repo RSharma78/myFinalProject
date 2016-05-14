@@ -25,7 +25,7 @@ public class HomeController
 	@RequestMapping()
 	public ModelAndView test()
 	{
-		System.out.println("Inside home aontroller");
+	//	System.out.println("Inside home aontroller");
 		return new ModelAndView("index");
 	}
 	
@@ -35,27 +35,19 @@ public class HomeController
 	{
 		return  new ModelAndView("Register");
 	}
-	@RequestMapping("/AboutUs")
-	public ModelAndView about(HttpServletResponse response)throws Exception
+	
+	@RequestMapping("/ContactUs")
+	public ModelAndView contact1(HttpServletResponse response)throws Exception
 	{
-		return  new ModelAndView("AboutUs");
+		return  new ModelAndView("ContactUs");
 	}
+	
 	@RequestMapping("/Login")
 	public ModelAndView login(HttpServletResponse response)throws Exception
 	{
 		return  new ModelAndView("Login");
 	}
-	@RequestMapping("/ContactUs")
-	public ModelAndView contact(HttpServletResponse response)throws Exception
-	{
-		return  new ModelAndView("ContactUs");
-	}
 	
-	@RequestMapping("/productdetail")
-	public ModelAndView contact2(HttpServletResponse response)throws Exception
-	{
-		return  new ModelAndView("ContactUs");
-	}
 	
 	
 	

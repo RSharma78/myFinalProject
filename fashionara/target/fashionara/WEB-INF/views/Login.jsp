@@ -8,9 +8,11 @@
 <div style="height: 50px"></div>
 
 
-<div class="container panel panel-default" style="width: 500px; border-radius: 0px;">
+<div class="container panel panel-default" style="width: 600px; border-radius: 0px;">
 
-  <div class="panel-heading" style="margin: 0px;background-color: #00A2E8; color:white; font-weight: bold; text-align: center; font-size: 30px; border-radius: 0px;">Login Page</div>
+  <div class="panel-heading" style="margin: 0px;background-color: #0pinkE8; color:black; font-weight: bold;
+   text-align: center; font-size: 30px; border-radius: 0px;">
+  Login Page</div>
   <div class="panel-body">
 
 <div class="text-center" style="padding-top: 50px;">
@@ -29,16 +31,18 @@
   </div>
   <div class="form-group text-center"> 
    
-      <button type="submit" class="btn" style="margin: 0px;width:100px; background-color: #00A2E8; color:white; text-align: center; font-size: 015x; border-radius: 0px;">
+      <button type="submit" class="btn" style="margin: 0px;width:100px; background-color: #00A2E8; 
+      color:black; text-align: center; font-size: 015x; border-radius: 0px;">
       Submit</button>
   </div>
 </form>
 	</div>
 </div>
-	<h4>Not Registered User Sign Up Here:</h4>
-	<button class="btn" style="margin: 0px;width:100px; background-color: #00A2E8; color:white; text-align: 
+<form action="Register">
+	<h4>Not Registered User</h4>
+	<button   class="btn" style="margin: 0px;width:100px; background-color: #00A2E8; color:white; text-align: 
 	center; font-size: 015x; border-radius: 0px;">
-      <a href="Register">Register</a></button>
+      Sign Up </button></form>
 	</div>
 
 

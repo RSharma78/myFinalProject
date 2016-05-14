@@ -35,7 +35,7 @@ public class DressesDaoImpl implements DressesDAO
 		Session s=getSession();
 		Transaction tx=s.beginTransaction();
 		List<Dresses>l=s.createQuery("From Dresses").list();
-		System.out.println("To check the data "+l);
+	//	System.out.println("To check the data "+l);
 		return l;
 	}
 	
@@ -44,11 +44,13 @@ public class DressesDaoImpl implements DressesDAO
 	{
 		 try
 		 {
-			 System.out.println("Check the data is saved or not");
+			 
+		//System.out.println("Check the data is saved or not");
 		
 		Session s=getSession();
 		Transaction tx=s.beginTransaction();
 		s.save(d);
+		
 		System.out.println("Check the data is saved or not");
 		tx.commit();
 		System.out.println("Transaction is committd");
@@ -91,12 +93,13 @@ public class DressesDaoImpl implements DressesDAO
 	{
 		Session s=getSession();
 		Transaction tx=s.beginTransaction();
-		System.out.println(tx);
-		s.update(d);
-		System.out.println("Dress Record is updated in database");
+		
+		if(null!=d)
+		{
+			s.update(d);
+		}
 		tx.commit();
 		s.close();
-		
 		return true;
 	}
 	public int getMaxId()
